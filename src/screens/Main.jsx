@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   View,
   StyleSheet,
@@ -12,9 +12,11 @@ import Header from '../components/Header';
 import {COLORS, FONTS} from '../helpers/colors';
 import {products} from '../products/data';
 import MenuItem from '../components/MenuItem';
+import {GlobalContext} from '../components/GlobalContext';
 
 export default function Main() {
   const [category, setCategory] = React.useState(0);
+  const {refresh, setRefresh} = useContext(GlobalContext);
   return (
     <View style={globalStyles.container}>
       <SafeAreaView />
@@ -22,7 +24,10 @@ export default function Main() {
 
       <View style={styles.categoryContainer}>
         <TouchableOpacity
-          onPress={() => setCategory(0)}
+          onPress={() => {
+            setCategory(0);
+            setRefresh(!refresh);
+          }}
           style={
             category === 0 ? styles.categoryItemActive : styles.categoryItem
           }>
@@ -33,7 +38,10 @@ export default function Main() {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => setCategory(1)}
+          onPress={() => {
+            setCategory(1);
+            setRefresh(!refresh);
+          }}
           style={
             category === 1 ? styles.categoryItemActive : styles.categoryItem
           }>
@@ -44,7 +52,10 @@ export default function Main() {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => setCategory(2)}
+          onPress={() => {
+            setCategory(2);
+            setRefresh(!refresh);
+          }}
           style={
             category === 2 ? styles.categoryItemActive : styles.categoryItem
           }>
@@ -55,7 +66,10 @@ export default function Main() {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => setCategory(3)}
+          onPress={() => {
+            setCategory(3);
+            setRefresh(!refresh);
+          }}
           style={
             category === 3 ? styles.categoryItemActive : styles.categoryItem
           }>
